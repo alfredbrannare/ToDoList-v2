@@ -3,6 +3,11 @@ const taskStorageObject = {};
 const typeTask = document.querySelector("#typeTask");
 const addTaskButton = document.querySelector("#addTaskButton");
 const taskList = document.querySelector(".taskContainer ul");
+const inputButton = document.querySelector(".inputButton");
+
+inputButton.addEventListener("click", addTask);
+
+
 
 function addTask(){
     if(typeTask.value === ""){
@@ -11,7 +16,7 @@ function addTask(){
     else{
         const taskValue = typeTask.value;
         taskStorageArray.push(taskValue);
-        // Test om array fungerar
+        // Array test
         console.log(taskStorageArray); 
 
         //Create task
