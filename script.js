@@ -19,7 +19,13 @@ function addTask(){
         li.textContent = typeTask.value;
         li.classList.add("newTask");
         taskList.appendChild(li);
-        typeTask.value = ""; 
+        typeTask.value = "";
+        
+        //Line through
+        li.onclick = function() {
+            li.classList.toggle("completed");
+
+        }        
 
         // Create Delete button
         const deleteButton = document.createElement("button");
@@ -29,13 +35,10 @@ function addTask(){
         
         //Delete task
         deleteButton.onclick = function deleteTask(){
-        li.remove();
-        
-        //Line through
-        
+        li.remove();        
+        };
 
 
-        }
         
     }
     
