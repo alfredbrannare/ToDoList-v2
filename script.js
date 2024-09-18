@@ -22,10 +22,9 @@ function addTask(){
         typeTask.value = "";
         
         //Line through
-        li.onclick = function() {
+        li.addEventListener("click", function(){
             li.classList.toggle("completed");
-
-        }        
+        });        
 
         // Create Delete button
         const deleteButton = document.createElement("button");
@@ -34,12 +33,8 @@ function addTask(){
         li.appendChild(deleteButton);
         
         //Delete task
-        deleteButton.onclick = function deleteTask(){
-        li.remove();        
-        };
-
-
-        
+        deleteButton.addEventListener("click", function(){
+            li.remove();
+        });        
     }
-    
 }
