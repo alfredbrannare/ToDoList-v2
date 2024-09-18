@@ -4,10 +4,14 @@ const typeTask = document.querySelector("#typeTask");
 const addTaskButton = document.querySelector("#addTaskButton");
 const taskList = document.querySelector(".taskContainer ul");
 const inputButton = document.querySelector(".inputButton");
+const remaningTasks = document.querySelector("#remaningTasks");
+
+
+
 
 inputButton.addEventListener("click", addTask);
 
-
+// innerhtml = taskStorageArry.lenght --- Bygg på
 
 function addTask(){
     if(typeTask.value === ""){
@@ -17,7 +21,7 @@ function addTask(){
         const taskValue = typeTask.value;
         taskStorageArray.push(taskValue);
         // Array test
-        console.log(taskStorageArray); 
+        console.log(taskStorageArray.length); 
 
         //Create task
         let li = document.createElement("li");
@@ -25,7 +29,7 @@ function addTask(){
         li.classList.add("newTask");
         taskList.appendChild(li);
         typeTask.value = "";
-        
+                
         //Line through
         li.addEventListener("click", function(){
             li.classList.toggle("completed");
@@ -40,6 +44,7 @@ function addTask(){
         //Delete task
         deleteButton.addEventListener("click", function(){
             li.remove();
+             
         });        
     }
 }
