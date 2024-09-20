@@ -1,50 +1,68 @@
 const taskStorageArray = [];
-const taskStorageObject = {};
 const typeTask = document.querySelector("#typeTask");
 const addTaskButton = document.querySelector("#addTaskButton");
 const taskList = document.querySelector(".taskContainer ul");
-const inputButton = document.querySelector(".inputButton");
-const remaningTasks = document.querySelector("#remaningTasks");
+const remainingTasks = document.querySelector("#remainingTasks");
+const finishedTasks = document.querySelector("#finishedTasks");
 
+let taskId = 0;
+let completedTaskCount = 0;
 
+addTaskButton.addEventListener("click", addTask);
 
-
-inputButton.addEventListener("click", addTask);
-
-// innerhtml = taskStorageArry.lenght --- Bygg på
-
-function addTask(){
-    if(typeTask.value === ""){
+function addTask() {
+    if (typeTask.value === "") {
         alert("You have to type in a task");
-    } 
-    else{
-        const taskValue = typeTask.value;
-        taskStorageArray.push(taskValue);
-        // Array test
-        console.log(taskStorageArray.length); 
-
-        //Create task
-        let li = document.createElement("li");
-        li.textContent = typeTask.value;
-        li.classList.add("newTask");
-        taskList.appendChild(li);
-        typeTask.value = "";
-                
-        //Line through
-        li.addEventListener("click", function(){
-            li.classList.toggle("completed");
-        });        
-
-        // Create Delete button
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("deleteButton");
-        deleteButton.textContent = "X";
-        li.appendChild(deleteButton);
-        
-        //Delete task
-        deleteButton.addEventListener("click", function(){
-            li.remove();
-             
-        });        
+        return;
     }
+
+    const taskValue = typeTask.value;
+    const newTask = { id: taskId++, text: taskValue, completed: false };
+
+    // Create task element
+    const li = document.createElement("li");
+    li.textContent = newTask.text;
+    li.classList.add("newTask");
+    taskList.appendChild(li);
+
+    // Handle task completion
+    li.addEventListener("click", function () {
+        li.classList.toggle("completed");
+        newTask.completed = !newTask.completed;
+
+        // Update completed task count
+        if (newTask.completed) {
+            completedTaskCount++;
+        } else {
+            completedTaskCount--;
+        }
+        updateTaskCounts();
+    });
+
+    // Create and add delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("deleteButton");
+    deleteButton.textContent = "X";
+    li.appendChild(deleteButton);
+
+    // Handle task deletion
+    deleteButton.addEventListener("click", function () {
+        li.remove();
+        taskStorageArray.splice(taskStorageArray.indexOf(newTask), 1);
+        if (newTask.completed) {
+            completedTaskCount--;
+        }
+        updateTaskCounts();
+    });
+
+    // Add task to array and update counts
+    taskStorageArray.push(newTask);
+    typeTask.value = "";
+    updateTaskCounts();
+}
+
+//Posts/displays the tasks complete or not completed
+function updateTaskCounts() {
+    remainingTasks.textContent = `Remaining: ${taskStorageArray.length - completedTaskCount}`;
+    finishedTasks.textContent = `Finished: ${completedTaskCount}`;
 }

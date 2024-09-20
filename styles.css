@@ -1,14 +1,14 @@
-*{
+* {
     font-family: monospace;
 }
 
 body {
-    background: radial-gradient(rgb(0, 162, 255), rgb(0, 67, 112)); 
+    background: radial-gradient(rgb(0, 162, 255), rgb(0, 67, 112));
     margin: 0;
     height: 100vh;
 }
 
-.infoContainer{
+.infoContainer {
     background-color: white;
     text-align: center;
     justify-content: center;
@@ -18,17 +18,17 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     margin: 50px auto;
-    
+
 }
 
-.inputContainer{
+.inputContainer {
     justify-content: center;
     box-sizing: border-box;
     width: 550px;
     margin: 20px auto;
 }
 
-.inputBox{
+.inputBox {
     width: 480px;
     border-radius: 5px;
     border: 2px solid black;
@@ -37,7 +37,7 @@ body {
     padding-bottom: 5px;
 }
 
-.inputButton{
+.inputButton {
     width: 50px;
     border-radius: 5px;
     border: 2px solid black;
@@ -46,19 +46,19 @@ body {
     padding-bottom: 5px;
 }
 
-.inputButton:hover{
+.inputButton:hover {
     background-color: rgb(99, 216, 99);
     cursor: pointer;
 }
 
-.taskContainer{
+.taskContainer {
     text-align: center;
     justify-content: center;
     box-sizing: border-box;
     width: 550px;
     padding: 50px;
     margin: 50px auto;
-    text-align: left; 
+    text-align: left;
 }
 
 .taskContainer ul {
@@ -73,7 +73,7 @@ body {
     margin-right: 15px;
 }
 
-.newTask{
+.newTask {
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     border: 2px solid rgb(0, 0, 0);
@@ -87,12 +87,12 @@ body {
     padding-left: 10px;
 }
 
-.newTask:hover{
+.newTask:hover {
     background-color: rgb(231, 231, 231);
     cursor: pointer;
 }
 
-.deleteButton{
+.deleteButton {
     width: 50px;
     border-radius: 5px;
     border: 2px solid black;
@@ -102,12 +102,12 @@ body {
 
 }
 
-.deleteButton:hover{
+.deleteButton:hover {
     background-color: rgb(255, 107, 107);
     cursor: pointer;
 }
 
-.completed{
+.completed {
     text-decoration: line-through;
     color: grey;
     opacity: 0.7;
